@@ -1,0 +1,82 @@
+{% load static %}
+<div class="navbar-area">
+    <!-- navbar top start -->
+    <div class="navbar-top bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 text-md-left text-center">
+                    <ul>
+                        <li><p><i class="fa fa-map-marker"></i> {{setting.phone}}</p></li>
+                        <li><p><i class="fa fa-envelope-o"></i> {{setting.email}}</p></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="topbar-right text-md-right text-center">
+                        <li class="social-area">
+                            {% if setting.facebook%}
+                            <a href="{{setting.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if setting.instagram%}
+                            <a href="{{setting.instagram}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if setting.youtube%}
+                            <a href="{{setting.youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if setting.whatsapp%}
+                            <a href="{{setting.whatsapp}}"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-area-1 navbar-area navbar-expand-lg">
+        <div class="container nav-container">
+            <div class="responsive-mobile-menu">
+                <button class="menu toggle-btn d-block d-lg-none" data-target="#edumint_main_menu" 
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-left"></span>
+                    <span class="icon-right"></span>
+                </button>
+            </div>
+            <div class="logo">
+                <a href="{% url 'index'%}"><img src="{{setting.logo.url}}" style="max-width:100px;"alt="img"></a>
+            </div>
+            <div class="nav-right-part nav-right-part-mobile">
+                <a class="search-bar-btn" href="#"><i class="fa fa-search"></i></a>
+            </div>
+            <div class="collapse navbar-collapse" id="edumint_main_menu">
+                <ul class="navbar-nav menu-open text-right">
+                    <li >
+                        <a href="{% url 'index'%}">Главная страница</a>
+    
+                    </li>
+                    <li >
+                        <a href="#">Курсы</a>
+                        
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">страницы</a>
+                        <ul class="sub-menu">
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="team.html">Наша команда</a></li>
+                            <li><a href="gallery.html">Галерея</a></li>
+                            <li><a href="signin.html">Sign In</a></li>
+                            <li><a href="signup.html">Sign Up</a></li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="{% url 'blog' %}">Новости</a>
+    
+                    </li>
+                    <li><a href="{% url 'contact'%}">Наши контакты</a></li>
+                </ul>
+            </div>
+            <div class="nav-right-part nav-right-part-desktop">
+                <a class="search-bar-btn" href="#"><i class="fa fa-search"></i></a>
+                <a class="btn btn-base menubar" id="navigation-button" href="#"><img src="{% static 'assets/img/icon/12.png' %}" alt="img"></a>
+            </div>
+        </div>
+    </nav>
+</div> 
