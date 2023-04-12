@@ -8,7 +8,7 @@ def  index(request):
     context = {
         "setting": setting
     }
-    return render(request, "home.html", context)
+    return render(request, "settings/home.html", context)
 
 def contact(request):
     setting = Setting.objects.latest("id")

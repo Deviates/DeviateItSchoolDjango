@@ -27,12 +27,13 @@ class Setting(models.Model):
     locate = models.CharField(
         max_length=255,
         verbose_name="Адрес",
-        blank=True,null=True
-        )
-    maps = models.URLField(
-        verbose_name="Адрес по карте",
-        blank=True,null=True
-        )
+        blank = True, null = True
+    )
+    address_url = models.URLField(
+        max_length=1000,
+        verbose_name="Ссылка на адрес",
+        blank = True, null = True
+    )
     facebook = models.URLField(
         verbose_name="Facebook",
         blank=True,null=True
@@ -82,4 +83,23 @@ class About(models.Model):
         verbose_name = "О нас"
         verbose_name_plural = "О нас"
         
- 
+class AboutNumber(models.Model):
+    teachers = models.CharField(
+        max_length=255,
+        verbose_name="Количество учителей"
+    )
+    students = models.TextField(
+        verbose_name="Количество студентов"
+    )
+    company = models.TextField(
+        verbose_name="Количество комании в которых работают"
+    )
+    alumni = models.TextField(
+        verbose_name="Количество выпускников"
+    )
+    def __str__(self):
+        return f"Учителей: {self.teachers} - Студентов: {self.students} - Компаний в которых работают: {self.company} - Выпускников: {self.alumni}"
+    
+    class Meta:
+        verbose_name = "Мы в числах"
+        verbose_name_plural = "Мы в числах"

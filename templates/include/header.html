@@ -1,4 +1,71 @@
 {% load static %}
+<!-- preloader area start -->
+<div class="preloader" id="preloader">
+    <div class="preloader-inner">
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
+</div>
+<!-- preloader area end -->
+
+<!-- search popup start-->
+<div class="td-search-popup" id="td-search-popup">
+    <form action="home.html" class="search-form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search.....">
+        </div>
+        <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+<!-- search popup end-->
+<div class="body-overlay" id="body-overlay"></div>
+
+<!--sidebar menu start-->
+<div class="sidebar-menu" id="sidebar-menu">
+    <button class="sidebar-menu-close"><i class="fa fa-times"></i></button>
+    <div class="sidebar-inner">
+        <div class="thumb">
+            <img src="{{setting.logo.url}}" alt="logo"/>
+        </div>
+        <p>We understand better that enim ad minim veniam, consectetur adipis cing elit, sed do </p>
+        <p>We understand better that enim ad minim veniam, consectetur adipi scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="sidebar-address">
+            <h4 class="mb-3">Contact Us</h4>
+            <ul>
+                {% if setting.locate%}
+                <li><i class="fa fa-map-marker"></i>Lavaca Street, Suite 2000</li>
+                {% endif %}
+                {% if setting.email%}
+                <li><i class="fa fa-envelope"></i>email@evha.com</li>
+                {% endif %}
+                {% if setting.phone%}
+                <li><i class="fa fa-phone"></i>(+880) 172570051</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="sidebar-subscribe">
+            <input type="text" placeholder="Email">
+            <button><i class="fa fa-angle-right"></i></button>
+        </div>
+        <ul class="social-media">
+            {% if setting.facebook%}
+            <li><a href="{{setting.facebook}}"><i class="fa fa-facebook-f"></i></a></li>
+            {% endif %}
+            {% if setting.instagram%}
+            <li><a href="{{setting.instagram}}"><i class="fa fa-instagram"></i></a></li>
+            {% endif %}
+            {% if setting.youtube%}
+            <li><a href="{{setting.youtube}}"><i class="fa fa-youtube"></i></a></li>
+            {% endif %}
+            {% if setting.whatsapp%}
+            <li><a href="{{setting.whatsapp}}"><i class="fa fa-whatsapp"></i></a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+</div>
 <div class="navbar-area">
     <!-- navbar top start -->
     <div class="navbar-top bg-gray">
@@ -6,8 +73,12 @@
             <div class="row">
                 <div class="col-md-8 text-md-left text-center">
                     <ul>
+                        {% if setting.phone%}
                         <li><p><i class="fa fa-map-marker"></i> {{setting.phone}}</p></li>
+                        {% endif %}
+                        {% if setting.email%}
                         <li><p><i class="fa fa-envelope-o"></i> {{setting.email}}</p></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -59,9 +130,9 @@
                     <li class="menu-item-has-children">
                         <a href="#">страницы</a>
                         <ul class="sub-menu">
-                            <li><a href="about.html">О нас</a></li>
-                            <li><a href="team.html">Наша команда</a></li>
-                            <li><a href="gallery.html">Галерея</a></li>
+                            <li><a href="{% url 'about'%}">О нас</a></li>
+                            <li><a href="{% url 'team'%}">Наша команда</a></li>
+                            <li><a href="{% url 'gallery'%}">Галерея</a></li>
                             <li><a href="signin.html">Sign In</a></li>
                             <li><a href="signup.html">Sign Up</a></li>
                         </ul>
