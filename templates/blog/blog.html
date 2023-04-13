@@ -32,12 +32,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog-inner">
                         <div class="thumb">
-                            <img src="{{blog.image.url}}" alt="img">
+                            <img src="{{blog.image.url}}" style="max-width:300px;" alt="img">
                             <div class="date">{{blog.created_add}}</div>
                         </div>
                         <div class="details">
                             <h4><a href="{% url 'blog_detail' blog.id %}">{{blog.title}}</a></h4>
-                            <p class="content">{{blog.descriptions}}</p>
+                            <p class="content">{{blog.descriptions|truncatewords:5}}</p>
                             <a class="read-more-text ml-0" href="{% url 'blog_detail' blog.id%}">Продолжить дале <i class="la la-arrow-right"></i></a>
                         </div>
                     </div>

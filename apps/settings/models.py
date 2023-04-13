@@ -88,13 +88,16 @@ class AboutNumber(models.Model):
         max_length=255,
         verbose_name="Количество учителей"
     )
-    students = models.TextField(
+    students = models.CharField(
+        max_length=255,
         verbose_name="Количество студентов"
     )
-    company = models.TextField(
+    company = models.CharField(
+        max_length=255,
         verbose_name="Количество комании в которых работают"
     )
-    alumni = models.TextField(
+    alumni = models.CharField(
+        max_length=255,
         verbose_name="Количество выпускников"
     )
     def __str__(self):
@@ -103,3 +106,53 @@ class AboutNumber(models.Model):
     class Meta:
         verbose_name = "Мы в числах"
         verbose_name_plural = "Мы в числах"
+
+class Team(models.Model):
+    image = models.ImageField(
+        upload_to="team_image/",
+        verbose_name="Фотография"
+    )
+    descriptions = models.TextField(
+        verbose_name="Описание"
+    )
+    name = models.CharField(
+        max_length=244,
+        verbose_name="ФИО"
+    )
+    work = models.CharField(
+        max_length=255,
+        verbose_name="Работа"
+    )
+    facebook = models.URLField(
+        verbose_name="Facebook",
+        blank=True,null=True
+    )
+    instagram = models.URLField(
+        verbose_name="Instagram",
+        blank=True,null=True
+    )
+    github = models.URLField(
+        verbose_name="GitHub",
+        blank=True,null=True
+    )
+    whatsapp = models.URLField(
+        verbose_name="Whatsapp",
+        blank=True,null=True
+    )
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Команда"
+        verbose_name_plural = "Команда"
+
+class Gallery(models.Model):
+    image =models.ImageField(
+        upload_to="gallery_image/",
+        verbose_name="Фотография"
+    )
+
+    class Meta:
+        verbose_name = "Галерея"
+        verbose_name_plural = "Галерея"

@@ -25,72 +25,25 @@
     <div class="gallery-area pd-top-120 pd-bottom-120 bg-relative">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/1.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/1.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                          </a>                  
+                {% for gallery in gallery %}
+                    <div class="col-md-4">
+                        <div class="gallery-thumb">    
+                            <a href="{{ gallery.image.url }}" class="without-caption image-link">
+                                <img src="{{ gallery.image.url }}" />  
+                                <span>
+                                    <i class="fa fa-search-plus"></i>
+                                </span>
+                            </a>                  
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/2.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/2.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                          </a>                  
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/3.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/3.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                        </a>                  
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/4.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/4.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                        </a>                  
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/5.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/5.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                        </a>                  
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="gallery-thumb">    
-                        <a href="{% static 'assets/img/gallery/6.png' %}" class="without-caption image-link">
-                            <img src="{% static 'assets/img/gallery/6.png' %}" />  
-                            <span>
-                                <i class="fa fa-search-plus"></i>
-                            </span>
-                        </a>                  
-                    </div>
-                </div>
+                    {% endfor %}
                 <div class="col-lg-12 text-center">
                     <a class="btn btn-base" href="#">Load More</a>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- gallery area end -->
 
     <!-- footer area start -->

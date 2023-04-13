@@ -10,10 +10,10 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <div class="section-title mb-0">
-                    <h2 class="page-title">Instructor</h2>
+                    <h2 class="page-title">Наша команда</h2>
                     <ul class="page-list">
-                        <li><a href="home.html">Home</a></li>
-                        <li>Instructor</li>
+                        <li><a href="{% url 'index' %}">Домой</a></li>
+                        <li>Наша команда</li>
                     </ul>
                 </div>
             </div>
@@ -25,211 +25,56 @@
     <div class="team-area pd-top-120 pd-bottom-90">
         <div class="container">
             <div class="row justify-content-center">
+                {% for team in team %}
                 <div class="col-lg-4 col-md-6">
                     <div class="single-team-inner text-center">
                         <div class="thumb">
-                            <img src="{% static 'assets/img/team/1.png' %}" alt="team">                       
+                            <img src="{{ team.image.url }}" alt="team">                       
                             <ul class="social-media">
                                 <li>
-                                    <a class="btn-base-m" href="#">
+                                    {% if team.facebook %}
+                                    <a class="btn-base-m" href="{{ team.facebook }}">
                                         <i class="fa fa-facebook"></i>
                                     </a>
+                                    {% endif %}
                                 </li>
                                 <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
+                                    {% if team.instagram %}
+                                    <a class="btn-base-m" href="{{ team.instagram }}">
                                         <i class="fa fa-instagram"></i>
                                     </a>
+                                    {% endif %}
                                 </li>
                                 <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
+                                    {% if team.whatsapp %}
+                                    <a class="btn-base-m" href="{{ team.whatsapp }}">
+                                        <i class="fa fa-whatsapp"></i>
                                     </a>
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    {% if team.github %}
+                                    <a class="btn-base-m" href="{{  team.github }}">
+                                        <i class="fa-github"></i>
+                                    </a>
+                                    {% endif %}
                                 </li>
                             </ul>
                         </div> 
                         <div class="details">
-                            <h4><a href="team-details.html">Boris Johnson</a></h4>
-                            <span>Design Expart</span>
+                            <h4><a href="{% url 'team_detail' team.id %}">{{ team.name }}</a></h4>
+                            <span>{{ team.work }}</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner text-center">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/2.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Alex Pandiyan</a></h4>
-                            <span>Executive Manager</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner text-center">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/3.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Doris Jordan</a></h4>
-                            <span>Design Expart</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner text-center">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/4.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Alisa Mart</a></h4>
-                            <span>Marketing Expart</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner text-center">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/5.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Doris Jordan</a></h4>
-                            <span>Design Expart</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner text-center">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/6.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">John Jordan</a></h4>
-                            <span>Ceo Founder</span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
     <!-- team area end -->
 
     <!-- footer area start -->
-    <footer class="footer-area bg-overlay" style="background-image: url('{% static 'assets/img/bg/3.png' %}');">
+    <footer class="footer-area bg-overlay" >
         <div class="container">
             <div class="subscribe-area-inner style-white pl-0 pr-0 pt-0">
                 <div class="row">

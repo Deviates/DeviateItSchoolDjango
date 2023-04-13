@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">5</span>+</h2>
+                                <h2><span class="counter">{{ number.teachers }}</span>+</h2>
                                 <p>Преподователей</p>
                             </div>
                         </div>
@@ -79,8 +79,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">49</span>+</h2>
-                                <p>Instructore</p>
+                                <h2><span class="counter">{{ number.students }}</span>+</h2>
+                                <p>Студентов</p>
                             </div>
                         </div>
                     </div>
@@ -92,8 +92,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">199</span>+</h2>
-                                <p>Студентов</p>
+                                <h2><span class="counter">{{ number.company }}</span>+</h2>
+                                <p>IT-компаний, в которых работают наши выпускники</p>
                             </div>
                         </div>
                     </div>
@@ -105,8 +105,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">500</span>+</h2>
-                                <p>IT-компаний, в которых работают наши выпускники</p>
+                                <h2><span class="counter">{{ number.alumni }}</span>+</h2>
+                                <p>Выпускников</p>
                             </div>
                         </div>
                     </div>
@@ -116,106 +116,7 @@
     </div>
     <!-- counter area end -->
 
-    <!-- team area start -->
-    <div class="team-area bg-relative pd-top-115 pd-bottom-90">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-7 col-md-11">
-                    <div class="section-title text-center">
-                        <h6 class="sub-title double-line">Meet Out Team</h6>
-                        <h2 class="title">Creative Instractor</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/1.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/2.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/3.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- team area end -->
+
 
     <!-- testimonial area start -->
     <div class="testimonial-area pd-top-120 pd-bottom-115 bg-light">
@@ -223,8 +124,8 @@
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-6 col-md-11">
                     <div class="section-title text-center">
-                        <h6 class="sub-title double-line">Testimonial</h6>
-                        <h2 class="title">What They Are Talking About Us</h2>
+                        <h6 class="sub-title double-line">Отзыв</h6>
+                        <h2 class="title">Что Они Говорят О Нас </h2>
                     </div>
                 </div>
             </div>

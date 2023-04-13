@@ -10,10 +10,10 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <div class="section-title mb-0">
-                    <h2 class="page-title">Instructor Details</h2>
+                    <h2 class="page-title">{{team.name}}</h2>
                     <ul class="page-list">
-                        <li><a href="home.html">Home</a></li>
-                        <li>Instructor Details</li>
+                        <li><a href="{% url 'index' %}">Домой</a></li>
+                        <li>{{team.work}}</li>
                     </ul>
                 </div>
             </div>
@@ -28,221 +28,39 @@
                 <div class="row">
                     <div class="col-lg-5 text-center">
                         <div class="thumb mb-4">
-                            <img class="w-100" src="{% static 'assets/img/team/6.png' %}" alt="img">
+                            <img class="w-100" src="{{team.image.url}}" alt="img">
                         </div>
-                        <span class="designation">Design Expert</span>
-                        <h3 class="mt-2">Christine Pearson</h3>
+                        <span class="designation">{{team.work}}</span>
+                        <h3 class="mt-2">{{team.name}}</h3>
                         <ul class="social-media style-base mt-4">
+                            {% if team.facebook %}
                             <li>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="{{team.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </li>
+                            {% endif %}
+                            {% if team.instagram %}
                             <li>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="{{team.instagram}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                             </li>
+                            {% endif %}
+                            {% if team.whatsapp %}
                             <li>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="{{team.whatsapp}}"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                             </li>
+                            {% endif %}
+                            {% if team.github %}
                             <li>
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a href="{{team.github}}"><i class="fa fa-github" aria-hidden="true"></i></a>
                             </li>
-                            <li>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="col-lg-7">
                         <div class="details">
-                            <h3>About Me</h3>
-                            <p>Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl The quick, brown fox jumps over a lazy dog. </p>
-                            <p>DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim.</p>
+                            <h3>Обо мне</h3>
+                            <p>{{team.descriptions}}</p>
                         </div> 
-                        <h3 class="mt-4">My Course</h3>
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="single-course-inner">
-                                    <div class="thumb">
-                                        <img src="{% static 'assets/img/course/3.png' %}" alt="img">
-                                        <div class="course-header-meta">
-                                            <span class="level">Design</span>
-                                            <span class="course-wishlist">
-                                                <a href="#" class="course-wishlist-btn"><img src="{% static 'assets/img/course/1.png' %}" alt="img"></a> 
-                                            </span>                                           
-                                        </div>
-                                    </div>
-                                    <div class="details-inner">
-                                        <div class="details">
-                                            <div class="course-meta">
-                                                <div class="row">
-                                                    <div class="col-8">
-                                                        <div class="course-author">
-                                                            <img src="{% static 'assets/img/team/2.png' %}" alt="img">
-                                                            <span>Thomas Wills</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4 align-self-center text-right">
-                                                        <div class="price">$54</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h5><a href="#">Complete Data Science Course Data Science</a></h5>
-                                            <p>Java is the most stable and vastly uses a top programming language</p>
-                                        </div>
-                                        <div class="course-footer">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i> 4.3
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 align-self-center text-right">
-                                                    <div class="total-student">
-                                                        <img src="{% static 'assets/img/course/2.png' %}" alt="img"> Students
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="single-course-inner">
-                                    <div class="thumb">
-                                        <img src="{% static 'assets/img/course/4.png' %}" alt="img">
-                                        <div class="course-header-meta">
-                                            <span class="level">Design</span>
-                                            <span class="course-wishlist">
-                                                <a href="#" class="course-wishlist-btn"><img src="{% static 'assets/img/course/1.png' %}" alt="img"></a> 
-                                            </span>                                           
-                                        </div>
-                                    </div>
-                                    <div class="details-inner">
-                                        <div class="details">
-                                            <div class="course-meta">
-                                                <div class="row">
-                                                    <div class="col-8">
-                                                        <div class="course-author">
-                                                            <img src="{% static 'assets/img/team/1.png' %}" alt="img">
-                                                            <span>Thomas Wills</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4 align-self-center text-right">
-                                                        <div class="price">$54</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h5><a href="#">Bootcamp Data Science Course Data Science</a></h5>
-                                            <p>Java is the most stable and vastly uses a top programming language</p>
-                                        </div>
-                                        <div class="course-footer">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i> 4.3
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 align-self-center text-right">
-                                                    <div class="total-student">
-                                                        <img src="{% static 'assets/img/course/2.png' %}" alt="img"> Students
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="single-course-inner">
-                                    <div class="thumb">
-                                        <img src="{% static 'assets/img/course/5.png' %}" alt="img">
-                                        <div class="course-header-meta">
-                                            <span class="level">Design</span>
-                                            <span class="course-wishlist">
-                                                <a href="#" class="course-wishlist-btn"><img src="{% static 'assets/img/course/1.png' %}" alt="img"></a> 
-                                            </span>                                           
-                                        </div>
-                                    </div>
-                                    <div class="details-inner">
-                                        <div class="details">
-                                            <div class="course-meta">
-                                                <div class="row">
-                                                    <div class="col-8">
-                                                        <div class="course-author">
-                                                            <img src="{% static 'assets/img/team/1.png' %}" alt="img">
-                                                            <span>Thomas Wills</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4 align-self-center text-right">
-                                                        <div class="price">$54</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h5><a href="#">Course Data Complete Data Science</a></h5>
-                                            <p>Java is the most stable and vastly uses a top programming language</p>
-                                        </div>
-                                        <div class="course-footer">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i> 4.3
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 align-self-center text-right">
-                                                    <div class="total-student">
-                                                        <img src="{% static 'assets/img/course/2.png' %}" alt="img"> Students
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="single-course-inner">
-                                    <div class="thumb">
-                                        <img src="{% static 'assets/img/course/6.png' %}" alt="img">
-                                        <div class="course-header-meta">
-                                            <span class="level">Design</span>
-                                            <span class="course-wishlist">
-                                                <a href="#" class="course-wishlist-btn"><img src="{% static 'assets/img/course/1.png' %}" alt="img"></a> 
-                                            </span>                                           
-                                        </div>
-                                    </div>
-                                    <div class="details-inner">
-                                        <div class="details">
-                                            <div class="course-meta">
-                                                <div class="row">
-                                                    <div class="col-8">
-                                                        <div class="course-author">
-                                                            <img src="{% static 'assets/img/team/1.png' %}" alt="img">
-                                                            <span>Thomas Wills</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4 align-self-center text-right">
-                                                        <div class="price">$54</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h5><a href="#">Complete Data Science Course Data Science</a></h5>
-                                            <p>Java is the most stable and vastly uses a top programming language</p>
-                                        </div>
-                                        <div class="course-footer">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="rating">
-                                                        <i class="fa fa-star"></i> 4.3
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 align-self-center text-right">
-                                                    <div class="total-student">
-                                                        <img src="{% static 'assets/img/course/2.png' %}" alt="img"> Students
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

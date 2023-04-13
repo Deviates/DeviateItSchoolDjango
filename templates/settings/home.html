@@ -2,6 +2,7 @@
 {% load static%}
 {% block content%}
 
+
     {% include "include/header.html"%}
     <!-- navbar end -->
     
@@ -76,19 +77,21 @@
                     <div class="col-lg-6 col-md-11">
                         <div class="about-thumb-wrap about-left-thumb">
                             <img class="img-1" src="{% static 'assets/img/about/1.png' %}" alt="img">
-                            <img class="img-2" src="{% static 'assets/img/about/2.png' %}" alt="img">
-                            <img class="img-3" src="{% static 'assets/img/about/3.png' %}" alt="img">
+                            <img class="img-2" src="{{ about.first_image.url }}" style="max-width:400px;"alt="img">
+                            <img class="img-3" src="{{ about.second_image.url }}" style="max-width:300px;" alt="img">
                         </div>
                     </div>
                     <div class="col-lg-6 align-self-center">
                         <div class="about-inner-wrap mt-2 pt-4 pt-lg-0">  
                             <div class="section-title mb-0">
-                                <h6 class="sub-title left-line">About Us</h6>
-                                <h2 class="title">Best Driving company in the world</h2>
-                                <p class="content">We understand better that enim ad minim veniam, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum consectetur dolor sit amet, adipiscing elit, </p>
-                                <h4 class="small-title">We Can Help Develop For <br> Your Driving Skills</h4>
-                                <h4 class="phone"><img src="{% static 'assets/img/icon/1.png' %}" alt="img"> +44 - 0184 5698 98a</h4>
-                                <a class="btn btn-base" href="course.html">Start Course</a>
+                                <h6 class="sub-title left-line">О нас</h6>
+                                <h2 class="title">{{about.title}}</h2>
+                                <p class="content">{{ about.descriptions }}</p>
+                                <h4 class="small-title">Мы можем помочь развить ваши навыки</h4>
+                                {% if setting.phone %}
+                                <h4 class="phone"><img src="{% static 'assets/img/icon/1.png' %}" alt="img"> {{setting.phone}}</h4>
+                                {% endif %}
+                                <a class="btn btn-base" href="course.html">Посмотреть  Курсы</a>
                             </div>
                         </div>
                     </div>
@@ -250,8 +253,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">5</span>K+</h2>
-                                <p>Learn Driver</p>
+                                <h2><span class="counter">{{ number.teachers }}</span>+</h2>
+                                <p>Преподователей</p>
                             </div>
                         </div>
                     </div>
@@ -263,8 +266,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">49</span>+</h2>
-                                <p>Instructore</p>
+                                <h2><span class="counter">{{ number.students }}</span>+</h2>
+                                <p>Студентов</p>
                             </div>
                         </div>
                     </div>
@@ -272,12 +275,12 @@
                         <div class="media counter-list-inner">
                             <div class="media-left">
                                 <div class="thumb">
-                                    <img src="{% static 'assets/img/icon/4.png' %}" alt="img">
+                                    <img src="{% static 'assets/img/icon/company.jpg' %}" width = "70px" alt="img">
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">199</span>+</h2>
-                                <p>Learning car</p>
+                                <h2><span class="counter">{{ number.company }}</span>+</h2>
+                                <p>IT-компаний, в которых работают наши выпускники</p>
                             </div>
                         </div>
                     </div>
@@ -289,8 +292,8 @@
                                 </div>
                             </div>
                             <div class="media-body align-self-center">
-                                <h2><span class="counter">500</span>+</h2>
-                                <p>heavy driving</p>
+                                <h2><span class="counter">{{ number.alumni }}</span>+</h2>
+                                <p>Выпускников</p>
                             </div>
                         </div>
                     </div>
@@ -457,99 +460,63 @@
     <!-- testimonial area end -->
 
     <!-- team area start -->
+    
     <div class="team-area bg-relative pd-top-115 pd-bottom-90">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-7 col-md-11">
                     <div class="section-title text-center">
-                        <h6 class="sub-title double-line">Meet Out Team</h6>
-                        <h2 class="title">Creative Instractor</h2>
+                        <h6 class="sub-title double-line">Знакомство с командой</h6>
+                        <h2 class="title">Опытные Преподователи</h2>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/1.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/2.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-team-inner style-overlay">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/team/3.png' %}" alt="team">                       
-                            <ul class="social-media">
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="btn-base-m" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> 
-                        <div class="details">
-                            <h4><a href="team-details.html">Madison Ava</a></h4>
-                            <span>Instructor</span>
-                        </div>
+            <div class="team-area pd-top-120 pd-bottom-90">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        {% for team in team_page_number %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-team-inner text-center">
+                                    <div class="thumb">
+                                        <img src="{{ team.image.url }}" style="max-width:200px;" alt="team">                       
+                                        <ul class="social-media">
+                                            <li>
+                                                {% if team.facebook %}
+                                                <a class="btn-base-m" href="{{ team.facebook }}">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if team.instagram %}
+                                                <a class="btn-base-m" href="{{ team.instagram }}">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if team.whatsapp %}
+                                                <a class="btn-base-m" href="{{ team.whatsapp }}">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                            <li>
+                                                {% if team.github %}
+                                                <a class="btn-base-m" href="{{  team.github }}">
+                                                    <i class="fa fa-github"></i>
+                                                </a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div> 
+                                    <div class="details">
+                                        <h4><a href="{% url 'team_detail' team.id %}">{{ team.name }}</a></h4>
+                                        <span>{{ team.work }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -590,56 +557,27 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-inner">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/blog/1.png' %}" alt="img">
-                            <div class="date">05 May</div>
+            <div class="blog-area pd-top-120 pd-bottom-120">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        {% for blog in blog_page_obj %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-blog-inner">
+                                <div class="thumb">
+                                    <img src="{{blog.image.url}}" style="max-width:200px;" alt="img">
+                                    <div class="date">{{blog.created_add}}</div>
+                                </div>
+                                <div class="details">
+                                    <h4><a href="{% url 'blog_detail' blog.id %}">{{blog.title}}</a></h4>
+                                    <p class="content">{{blog.descriptions|truncatewords:5}}</p>
+                                    <a class="read-more-text ml-0" href="{% url 'blog_detail' blog.id%}">Продолжить дале <i class="la la-arrow-right"></i></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="details">
-                            <ul class="blog-meta">
-                                <li><img src="{% static 'assets/img/icon/10.png' %}" alt="img"> By Sophia</li>
-                                <li><img src="{% static 'assets/img/icon/11.png' %}" alt="img"> Comment</li>
-                            </ul>
-                            <h4><a href="blog-details.html">How to Safely Road-Trip During a Pandemic</a></h4>
-                            <p class="content">Excepteur sint occaecat cupidatat non proident, sunt in culpa </p>
-                            <a class="read-more-text ml-0" href="blog-details.html">Read More <i class="la la-arrow-right"></i></a>
-                        </div>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-inner">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/blog/2.png' %}" alt="img">
-                            <div class="date">06 May</div>
-                        </div>
-                        <div class="details">
-                            <ul class="blog-meta">
-                                <li><img src="{% static 'assets/img/icon/10.png' %}" alt="img"> By Sophia</li>
-                                <li><img src="{% static 'assets/img/icon/11.png' %}" alt="img"> Comment</li>
-                            </ul>
-                            <h4><a href="blog-details.html">Why We Must Drive BetterTo for Others</a></h4>
-                            <p class="content">Excepteur sint occaecat cupidatat non proident, sunt in culpa </p>
-                            <a class="read-more-text ml-0" href="blog-details.html">Read More <i class="la la-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-inner">
-                        <div class="thumb">
-                            <img src="{% static 'assets/img/blog/3.png' %}" alt="img">
-                            <div class="date">07 May</div>
-                        </div>
-                        <div class="details">
-                            <ul class="blog-meta">
-                                <li><img src="{% static 'assets/img/icon/10.png' %}" alt="img"> By Sophia</li>
-                                <li><img src="{% static 'assets/img/icon/11.png' %}" alt="img"> Comment</li>
-                            </ul>
-                            <h4><a href="blog-details.html">Lighting the Way with Guest Daniel Stern</a></h4>
-                            <p class="content">Excepteur sint occaecat cupidatat non proident, sunt in culpa </p>
-                            <a class="read-more-text ml-0" href="blog-details.html">Read More <i class="la la-arrow-right"></i></a>
-                        </div>
+                    <div class="btn-wrap mt-4 text-center">
+                        <a class="btn btn-base" href="blog.html">View More</a>
                     </div>
                 </div>
             </div>
