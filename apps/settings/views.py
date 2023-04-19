@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 
 from apps.blog.models import Blog
-from .models import Setting,About,AboutNumber,Team,Gallery
+from .models import Setting,About,AboutNumber,Team,Gallery,Slide
 
 # Create your views here.
 def  index(request):
@@ -19,13 +17,15 @@ def  index(request):
     blog_paginator = Paginator(blog, 3)
     blog_page_number = request.GET.get('page')
     blog_page_obj = blog_paginator.get_page(blog_page_number)
+    slide = Slide.objects.latest("id")
+    
     context = {
         "setting": setting,
         "about": about,
         "number": number,
         "team_page_number": team_page_number,
         "blog_page_obj": blog_page_obj,
-
+        "slide": slide,
 
     }
     return render(request, "settings/home.html", context)

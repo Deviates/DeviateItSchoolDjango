@@ -29,19 +29,18 @@
         <div class="thumb">
             <img src="{{setting.logo.url}}" alt="logo"/>
         </div>
-        <p>We understand better that enim ad minim veniam, consectetur adipis cing elit, sed do </p>
-        <p>We understand better that enim ad minim veniam, consectetur adipi scing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>{{setting.descrtiptions}}</p>
         <div class="sidebar-address">
-            <h4 class="mb-3">Contact Us</h4>
+            <h4 class="mb-3">контакты</h4>
             <ul>
                 {% if setting.locate%}
-                <li><i class="fa fa-map-marker"></i>Lavaca Street, Suite 2000</li>
+                <li><i class="fa fa-map-marker"></i>{{setting.locate}}</li>
                 {% endif %}
                 {% if setting.email%}
-                <li><i class="fa fa-envelope"></i>email@evha.com</li>
+                <li><i class="fa fa-envelope"></i>{{setting.email}}</li>
                 {% endif %}
                 {% if setting.phone%}
-                <li><i class="fa fa-phone"></i>(+880) 172570051</li>
+                <li><i class="fa fa-phone"></i>{{setting.phone}}</li>
                 {% endif %}
             </ul>
         </div>
@@ -130,18 +129,35 @@
                     <li class="menu-item-has-children">
                         <a href="#">страницы</a>
                         <ul class="sub-menu">
+                            <li ><a href="{% url 'blog' %}">Новости</a></li>
                             <li><a href="{% url 'about'%}">О нас</a></li>
                             <li><a href="{% url 'team'%}">Наша команда</a></li>
                             <li><a href="{% url 'gallery'%}">Галерея</a></li>
-                            <li><a href="signin.html">Sign In</a></li>
-                            <li><a href="signup.html">Sign Up</a></li>
+                            <li><a href="{% url 'login' %}">Войти</a></li>
+                            <li><a href="{% url 'register' %}">Зарегистрироваться</a></li>
+
                         </ul>
                     </li>
-                    <li >
-                        <a href="{% url 'blog' %}">Новости</a>
-    
-                    </li>
                     <li><a href="{% url 'contact'%}">Наши контакты</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="menu-item-has-children">
+                        <a href="{% url 'profile' %}">{{ request.user }}</a>
+                        <ul class="sub-menu">
+                            <li><a href="{% url 'profile' %}">Профиль</a></li>
+                            <li><a href="{% url 'logout' %}">Выйти</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="menu-item-has-children">
+                        <a href="#">Учетная запись</a>
+                        <ul class="sub-menu">
+                            <li><a href="{% url 'login' %}">Войти</a></li>
+                            <li><a href="{% url 'register' %}">Зарегистрироваться</a></li>
+
+                        </ul>
+                    </li>
+                    {% endif %}
+
                 </ul>
             </div>
             <div class="nav-right-part nav-right-part-desktop">
