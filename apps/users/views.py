@@ -14,8 +14,6 @@ def register(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         try:
-        
-            if password == confirm_password:
                 user = User.objects.create(username=username,email=email)
                 user.set_password(password)
                 user.save()
