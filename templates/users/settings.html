@@ -22,7 +22,7 @@
                   <a href="{% url 'index'%}"><img src="{{setting.logo.url}}" width = "50px" alt=""></a>
                </div>
                <div class="menus-col">
-                  <div class="chat-menus">
+                  {% comment %} <div class="chat-menus">
                      <ul>
                         <li>
                            <a href="index.html" class="chat-unread blue">
@@ -30,12 +30,7 @@
                            <span>Chats</span>
                            </a>
                         </li>
-                        <li>
-                           <a href="group.html" class="chat-unread pink">
-                           <span class="material-icons">group</span>
-                           <span>Groups</span>
-                           </a>
-                        </li>
+                        
                         <li>
                            <a href="status.html" class="chat-unread">
                            <span class="material-icons">library_books</span>
@@ -55,21 +50,23 @@
                            </a>
                         </li>
                      </ul>
-                  </div>
+                  </div> {% endcomment %}
                   <div class="bottom-menus">
                      <ul>
+                        
                         <li>
-                           <a href="#" data-bs-toggle="modal" data-bs-target="#add-new-group">
-                           <span class="material-icons group-add-btn">group_add</span>
-                           <span>Add Groups</span>
+                           <a href="{{setting.telegram}}" class="chat-unread blue">
+                           <span class="material-icons">message</span>
+                           <span>Напишите нам</span>
                            </a>
                         </li>
                         <li>
-                           <a href="#" class="add-contacts-btn" data-bs-toggle="modal" data-bs-target="#add-contact">
-                           <i class="fas fa-plus"></i>
-                           <span>Add Contacts</span>
+                           <a href="{{setting.instagram}}" class="chat-unread pink">
+                           <span class="material-icons">group</span>
+                           <span>Свяжитесь</span>
                            </a>
                         </li>
+                        
                         <li>
                            <a href="#" id="dark-mode-toggle" class="dark-mode-toggle">
                            <i class="far fa-moon"></i>
@@ -84,11 +81,7 @@
                             {% endif%}
                            </a>
                            <div class="dropdown-menu dropdown-menu-end">
-                              <a href="#" class="dropdown-item dream_profile_menu">Edit Profile <span class="edit-profile-icon"><i class="fas fa-edit"></i></span></a>
-                              <a href="#" class="dropdown-item">Profile <span class="profile-icon-col"><i class="fas fa-id-card-alt"></i></span></a>
-                              <a href="settings.html" class="dropdown-item">Settings <span class="material-icons">settings</span></a>
-                              <a href="archived.html" class="dropdown-item">Archived <span class="material-icons">flag</span></a>
-                              <a href="login-email.html" class="dropdown-item">Logout <span class="material-icons">power_settings_new</span></a>
+                              <a href="{% url 'logout'%}" class="dropdown-item">Выйти <span class="material-icons">power_settings_new</span></a>
                            </div>
                         </li>
                      </ul>
@@ -100,16 +93,13 @@
                   <div class="slimscroll">
                      <div class="left-chat-title d-flex justify-content-between align-items-center">
                         <div class="chat-title">
-                           <h4>PROFILE</h4>
+                           <h4>Профиль</h4>
                         </div>
                         <div class="btn-section">
-                           <a href = "{% url 'logout'%}"><button class="btn logout-btn">Sign out</button></a>
+                           <a href = "{% url 'logout'%}"><button class="btn logout-btn">Выйти</button></a>
                         </div>
                      </div>
-                     <div class="search_chat has-search">
-                        <span class="fas fa-search form-control-feedback"></span>
-                        <input class="form-control chat_input" id="search-contacts" type="text" placeholder="Search Contacts">
-                     </div>
+                    
                      <div class="settings-option">
                         <a href="#" class="user-list-item">Edit Settings</a>
                      </div>
@@ -118,16 +108,10 @@
                            <label class="profile-cover-avatar" for="avatar_upload">
                             {% if user.profile_image%}
                               <img class="avatar-img" src="{{user.profile_image.url}}" alt="Profile Image">
-                              <input type="file" id="avatar_upload">
                             {% else %}
                               <img class="avatar-img" src="{% static 'users/img/avatar/avatar.webp' %}" alt="Profile Image">
-                              <input type="file" id="avatar_upload">
                             {% endif %}
-                              <span class="avatar-edit">
-                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 avatar-uploader-icon shadow-soft">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                 </svg>
-                              </span>
+                              
                            </label>
                            <h5 class="mt-3 profile-name mb-1">{{user.username}}</h5>
                            <p class="profile-email mb-1"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="533e3a303b363f3f367d342136363d13343e323a3f7d303c3e">{{user.email}}</a></p>
@@ -153,7 +137,7 @@
                            {% else %}
                            <div class="text-center mb-4">
                             <p class="info-title mb-0">Прозвище</p>
-                            <span class="info-text"Введите свое прозвище</span>
+                            <span class="info-text">Введите свое прозвище</span>
                             </div>
                             {% endif%}
                             {% if user.email%}
@@ -169,15 +153,21 @@
                             {% endif%}
 
                            <ul class="social-nav p-0 mb-0 text-center">
+                              {% if user.instagram%}
                               <li>
-                                 <a href="#"><i class="fab fa-instagram-f"></i></a>
+                                 <a href="{{user.instagram}}"><i class="fab fa-instagram"></i></a>
                               </li>
+                              {% endif %}
+                              {% if user.youtube%}
                               <li>
-                                 <a href="#"><i class="fab fa-youtube"></i></a>
+                                 <a href="{{user.youtube}}"><i class="fab fa-youtube"></i></a>
                               </li>
+                              {% endif %}
+                              {% if user.telegram%}
                               <li>
-                                 <a href="#"><i class="fab fa-telegram-in"></i></a>
+                                 <a href="{{user.telegram}}"><i class="fab fa-telegram"></i></a>
                               </li>
+                              {% endif %}
                            </ul>
                         </div>
                      </div>
@@ -187,7 +177,7 @@
             </div>
             <div class="chat settings-main pt-2" id="middle">
                <div class="slimscroll">
-                  <div class="page-header d-flex align-items-center">
+                  {% comment %} <div class="page-header d-flex align-items-center">
                      <div class="me-3 d-md-block d-lg-none">
                         <a class="text-muted px-0 left_side" href="#">
                         <i class="fas fa-arrow-left"></i>
@@ -197,39 +187,38 @@
                         <h5>SETTINGS</h5>
                         <p>Last Update your profile: 29 Aug 2020</p>
                      </div>
-                  </div>
+                  </div> {% endcomment %}
                   <div class="settings-tab my-4">
                      <nav>
                         <div class="nav nav-tabs" id="nav-tab">
-                           <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#general">General Settings</a>
-                           <a class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#notifications">Notification</a>
-                           <a class="nav-item nav-link" id="nav-profile-tab1" data-bs-toggle="tab" href="#history">Device History</a>
-                           <a class="nav-item nav-link" id="nav-profile-tab2" data-bs-toggle="tab" href="#security">Security</a>
+                           <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#general">Настройки Профиля</a>
+                           <a class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#notifications">Мои Курсы</a>
                         </div>
                      </nav>
                      <div class="tab-content settings-form">
                         <div class="tab-pane fade show active" id="general">
                            <div class="settings-header">
-                              <h5>Account Settings</h5>
-                              <p>Update your account details</p>
+                              <h5>Настройки учетной записи</h5>
+                              <p>Обновите данные своей учетной записи</p>
                            </div>
                            <div class="settings-control p-3">
                               <div class="form-col form-body">
-                                 <form action="index.html">
+                                 <form method = "POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
                                     <div class="row">
 
                                         {% if user.first_name %}
                                        <div class="col-md-6 col-xl-4">
                                           <div class="form-group">
                                              <label> Имя </label>
-                                             <input class="form-control form-control-lg group_formcontrol" name="first-name" type="text" placeholder = "{{user.first_name}}">
+                                             <input class="form-control form-control-lg group_formcontrol" name="first_name" type="text" value = "{{user.first_name}}">
                                           </div>
                                        </div>
                                        {% else %}
                                        <div class="col-md-6 col-xl-4">
                                         <div class="form-group">
                                            <label> Имя </label>
-                                           <input class="form-control form-control-lg group_formcontrol" name="first-name" type="text" placeholder = "Введите свое имя">
+                                           <input class="form-control form-control-lg group_formcontrol" name="first_name" type="text" placeholder = "Введите свое имя">
                                         </div>
                                         </div>
                                         {%endif%}
@@ -239,14 +228,14 @@
                                        <div class="col-md-6 col-xl-4">
                                           <div class="form-group">
                                              <label>Фамилия</label>
-                                             <input class="form-control form-control-lg group_formcontrol" name="last-name" type="text" placeholder = "{{user.last_name}}">
+                                             <input class="form-control form-control-lg group_formcontrol" name="last_name" type="text" value = "{{user.last_name}}">
                                           </div>
                                        </div>
                                        {% else %}
                                        <div class="col-md-6 col-xl-4">
                                         <div class="form-group">
                                            <label>Фамилия</label>
-                                           <input class="form-control form-control-lg group_formcontrol" name="last-name" type="text" placeholder = "Введите свою фамилию">
+                                           <input class="form-control form-control-lg group_formcontrol" name="last_name" type="text" placeholder = "Введите свою фамилию">
                                         </div>
                                         </div>
                                         {% endif %}
@@ -254,15 +243,15 @@
                                         {% if user.phone %}
                                        <div class="col-md-6 col-xl-4">
                                           <div class="form-group">
-                                             <label>Phone Number</label>
-                                             <input class="form-control form-control-lg group_formcontrol" name="phone-number" type="text" placeholder = "{{user.phone}}">
+                                             <label>Телефонный номер</label>
+                                             <input class="form-control form-control-lg group_formcontrol" name="phone" type="text" value = "{{user.phone}}">
                                           </div>
                                        </div>
                                        {% else %}
                                        <div class="col-md-6 col-xl-4">
                                         <div class="form-group">
                                            <label>Phone Number</label>
-                                           <input class="form-control form-control-lg group_formcontrol" name="phone-number" type="text" placeholder = "Введите свой номер">
+                                           <input class="form-control form-control-lg group_formcontrol" name="phone" type="text" value = "Введите свой номер">
                                         </div>
                                      </div>
                                      {% endif %}
@@ -271,121 +260,115 @@
                                        <div class="col-md-6 col-xl-4">
                                           <div class="form-group">
                                              <label>Прозвище<span class=""></span></label>
-                                             <input class="form-control form-control-lg group_formcontrol" name="nick-name" type="text" placeholder = "{{user.username}}">
+                                             <input class="form-control form-control-lg group_formcontrol" name="username" type="text" value = "{{user.username}}">
                                           </div>
                                        </div>
                                     {% else %}
                                     <div class="col-md-6 col-xl-4">
                                         <div class="form-group">
                                            <label>Прозвище <span class=""></span></label>
-                                           <input class="form-control form-control-lg group_formcontrol" name="nick-name" type="text" placeholder = "Введите свое прозвище">
+                                           <input class="form-control form-control-lg group_formcontrol" name="username" type="text" placeholder = "Введите свое прозвище">
                                         </div>
                                      </div>
                                     {% endif %}
 
-                                    {% if user.profile_image %}
-
-                                       <div class="col-md-6 col-xl-4">
-                                          <div class="form-group">
-                                             <label>Выберите фотографию профиля</label>
-                                             <div class="custom-input-file form-control form-control-lg group_formcontrol">
-                                                <input type="file" class="" >
-                                                <span class="browse-btn">Открыть Файл</span>
-                                             </div>
-                                          </div>
+                                    
+                                    <div class="col-md-6 col-xl-4">
+                                       <div class="form-group">
+                                       <label>Выберите фотографию профиля</label>
+                                       <div class="custom-input-file form-control form-control-lg group_formcontrol">
+                                          <input type="file" name="profile_image" placeholder = "Ваша фотография">
+                                          <span class="browse-btn">Открыть Файл</span>
                                        </div>
-                                    {% else %}
-                                        <div class="col-md-6 col-xl-4">
-                                            <div class="form-group">
-                                            <label>Выберите фотографию профиля</label>
-                                            <div class="custom-input-file form-control form-control-lg group_formcontrol">
-                                                <input type="file" class="" placeholder = "Ваша фотография">
-                                                <span class="browse-btn">Открыть Файл</span>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    {% endif%}
+                                       </div>
+                                    </div>
 
-                                    {% if user.profile_image %}
+                                    {% if user.locate %}
                                        <div class="col-md-6 col-xl-4">
                                           <div class="form-group">
                                              <label>Адрес</label>
-                                             <input class="form-control form-control-lg group_formcontrol" name="location" type="text"placeholder = "{{user.locate}}">
+                                             <input class="form-control form-control-lg group_formcontrol" name="locate" type="text"value = "{{user.locate}}">
                                           </div>
                                        </div>
                                     {% else %}
                                     <div class="col-md-6 col-xl-4">
                                         <div class="form-group">
                                            <label>Адрес</label>
-                                           <input class="form-control form-control-lg group_formcontrol" name="location" type="text"placeholder = "Введите свой адрес">
+                                           <input class="form-control form-control-lg group_formcontrol" name="locate" type="text"placeholder = "Введите свой адрес">
                                         </div>
                                      </div>
                                     {% endif %}
 
-                                    {% if user.profile_image %}
+                                    {% if user.descriptions %}
                                        <div class="col-md-12 col-xl-12">
                                           <div class="form-group">
                                              <label>Биография</label>
-                                             <textarea class="form-control form-control-lg group_formcontrol" placeholder = "{{user.descriptions}}"></textarea>
+                                             <textarea class="form-control form-control-lg group_formcontrol" name="descriptions" value = "{{user.descriptions}}">{{user.descriptions}}</textarea>
                                           </div>
                                        </div>
                                     {% else %}
                                     <div class="col-md-12 col-xl-12">
                                         <div class="form-group">
                                            <label>Биография</label>
-                                           <textarea class="form-control form-control-lg group_formcontrol" placeholder = "Введите свою биографию"></textarea>
+                                           <textarea class="form-control form-control-lg group_formcontrol" name="descriptions" placeholder = "Введите свою биографию"></textarea>
                                         </div>
-                                     </div>
-                                     {% endif%}
-                                     
                                     </div>
-                                 </form>
-                              </div>
-                              <hr>
-                              <div class="social-settings">
-                                 <h4>Social Links</h4>
-                                 <div class="form-col form-body">
-                                    <form action="index.html">
+                                     {% endif%}
+                                    </div>
                                        <div class="row">
+                                          {% if user.telegram%}
                                           <div class="col-md-6 col-xl-4">
                                              <div class="form-group">
-                                                <input class="form-control form-control-lg group_formcontrol" name="facebook" type="text" placeholder="Facebook Link">
+                                                <input class="form-control form-control-lg group_formcontrol" name="telegram" type="text" value="{{user.telegram}}">
                                              </div>
                                           </div>
+                                          {% else %}
                                           <div class="col-md-6 col-xl-4">
                                              <div class="form-group">
-                                                <input class="form-control form-control-lg group_formcontrol" name="twitter" type="text" placeholder="Twitter Link">
+                                                <input class="form-control form-control-lg group_formcontrol" name="telegram" type="text" value="Введите ссылку на Telegram ">
                                              </div>
                                           </div>
+                                          {% endif %}
+                                          {% if user.instagram%}
                                           <div class="col-md-6 col-xl-4">
                                              <div class="form-group">
-                                                <input class="form-control form-control-lg group_formcontrol" name="instagram" type="text" placeholder="Instagram Link">
+                                                <input class="form-control form-control-lg group_formcontrol" name="instagram" type="text" value="{{user.instagram}}">
                                              </div>
                                           </div>
+                                          {% else %}
                                           <div class="col-md-6 col-xl-4">
                                              <div class="form-group">
-                                                <input class="form-control form-control-lg group_formcontrol" name="linkedin" type="text" placeholder="Linkedin Link">
+                                                <input class="form-control form-control-lg group_formcontrol" name="instagram" type="text" value="Введите ссылку на  Instagram">
                                              </div>
                                           </div>
+                                          {% endif %}
+                                          {% if user.youtube%}
                                           <div class="col-md-6 col-xl-4">
                                              <div class="form-group">
-                                                <input class="form-control form-control-lg group_formcontrol" name="youtube" type="text" placeholder="Youtube Link">
+                                                <input class="form-control form-control-lg group_formcontrol" name="youtube" type="text" value="{{user.youtube}}">
                                              </div>
                                           </div>
+                                          {% else %}
+                                          <div class="col-md-6 col-xl-4">
+                                             <div class="form-group">
+                                                <input class="form-control form-control-lg group_formcontrol" name="youtube" type="text" value="Введите ссылку на Youtube">
+                                             </div>
+                                          </div>
+                                          {% endif%}
+                                        
                                        </div>
                                        <div class="form-row profile_form m-0 align-items-center">
                                           <div class="me-4">
-                                             <button type="button" class="btn btn-update  mb-0">
-                                             Update Details
+                                             <button type="submit" class="btn btn-update  mb-0">
+                                             Обновить профиль
                                              </button>
                                           </div>
-                                          <div class="cancel-btn">
-                                             <a href="#" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
-                                          </div>
+                                          
                                        </div>
-                                    </form>
-                                 </div>
+                                 </form>
                               </div>
+                              <hr>
+                           
                            </div>
                            <div class="settings-delete mt-4">
                               <div class="row align-items-center justify-content-between">

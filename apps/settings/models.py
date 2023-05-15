@@ -50,6 +50,10 @@ class Setting(models.Model):
         verbose_name="Whatsapp",
         blank=True,null=True
     )
+    telegram = models.URLField(
+        verbose_name="Telegram",
+        blank=True,null=True
+    )
         
     def __str__(self):
         return self.name
