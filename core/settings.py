@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.course',
     'apps.users',
+    'apps.telegram',
 
     
     
@@ -137,3 +138,6 @@ MEDIA_ROOT = BASE_DIR/ 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+# telegram
+TELEGRAM_TOKEN = config.TOKEN
