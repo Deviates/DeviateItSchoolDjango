@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.core.paginator import Paginator
 
 from apps.blog.models import Blog
-from .models import Setting,About,AboutNumber,Team,Gallery,Slide
+from .models import Setting,About,AboutNumber,Team,Gallery,Slide,Contact
 
+from apps.telegram.views import get_text
 # Create your views here.
 def  index(request):
     setting = Setting.objects.latest("id")
@@ -32,6 +33,21 @@ def  index(request):
 
 def contact(request):
     setting = Setting.objects.latest("id")
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+        
+        review = Contact.objects.create(name = name, email = email, message = message)
+
+        get_text(f""" Оставлен отзыв 
+Имя пользователя: {review.name}
+Адрес(email): {review.email}
+Текст: {review.message}
+""")
+
+        return redirect("index")
+    
     context = {
         "setting": setting,
     }
