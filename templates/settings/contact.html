@@ -77,8 +77,9 @@
                             <h6 class="sub-title left-line">Связаться</h6>
                             <h3 class="small-title mt-0">Мы всегда готовы решить вашу любую проблему</h3>
                         </div>
-                        <form class="mt-5 mt-md-4">
+                        <form class="mt-5 mt-md-4" method="post">
                             <div class="row">
+                                {% csrf_token %}
                                 <div class="col-lg-6">
                                     <div class="single-input-inner">
                                         <input name="name" type="text" placeholder="Name">

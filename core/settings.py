@@ -141,3 +141,4 @@ AUTH_USER_MODEL = 'users.User'
 
 # telegram
 TELEGRAM_TOKEN = config.TOKEN
+ADMIN_ID = config.ADMIN_ID
